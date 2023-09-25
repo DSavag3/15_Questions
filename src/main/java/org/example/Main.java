@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.OptionalDouble;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -22,6 +24,10 @@ public class Main {
         System.out.println(getAverage(numbers));
         System.out.println(extractAllOddNumbers(numbers));
         System.out.println(extractAllEvenNumbers(numbers));
+        System.out.println(contains(names,"Dan"));
+        System.out.println(getIndexByElement(names, "Brody"));
+        System.out.println(printOddNumbersInRange();
+
     }
     public static int getLastIndex(String[] names) {
         return names.length -1;
@@ -82,27 +88,66 @@ public class Main {
     }
     //Question 10
     public static boolean contains(String[] names, String element) {
-        return false;
+        boolean d = false;
+        for (String a : names){
+            if (element.equals(a)){
+                d = true;
+            }
+        }
+        return d;
     }
     //Question 11
     public static int getIndexByElement(String[] names, String element) {
-        return 0;
+        for (int i = 0; i < names.length; i++){
+            if (names[i].equals(element)){
+                return i;
+            }
+        }
+
+        return -1;
     }
     //Question 12
     public static void printOddNumbersInRange(int start, int end){
-
+        for (int i = start; i <= end; i++){
+            if (i % 2 !=0){
+                System.out.println(i + " ");
+            }
+        }
     }
     //Question 13
     public static String printGivenStringTimesNumberGiven(String str, int n) {
-        return null;
+
+        String strBuilder = "";
+        for (int i = 0; i < n; i++) {
+            strBuilder += str + " ";
+        }
+        return strBuilder;
     }
+
+
     //Question 14
     public static String repeatFirstThreeLetters(String str, int n) {
-        return null;
+
+            String strLetters = "";
+            for (int i = 0; i < n; i++) {
+                strLetters += str.substring(0,2);
+            }
+            return strLetters;
     }
     //Question 15
     // Write a java method to count all the words in a string
     public static int WordsInAStringCounter(String str){
-        return 0;
+
+        int totalWords = 0;
+        String regex = " ";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+
+        while (matcher.find()) {
+            totalWords++;
+        }
+
+        return totalWords + 1;
     }
+
 }
